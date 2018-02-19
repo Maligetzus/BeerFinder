@@ -1,0 +1,96 @@
+﻿@using BeerFinder.Models.BarModels
+@model BeerFinder.Models.BarModels.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    int i = 0;
+}
+
+<form asp-controller="Bar" asp-action="Search" method="post">
+    <p>Search by tag or name!</p>
+    <input asp-for="Text"/><span asp-validation-for="Text"></span><br/>
+
+    <button type="submit">Cheers!</button>
+
+</form>
+
+@if (User.IsInRole("admin"))
+{
+    AddViewModel littleModel = Model.AddViewModel;
+    @Html.Partial("~/Views/Bar/Add.cshtml",littleModel);
+}
+<div class="container container-fluid">
+    <div class="row">
+        @foreach (BarViewModel partialModel in Model.BarViewModels)
+        {
+            if (partialModel != null)
+            {
+                <div class="col-md-3">
+                    @Html.Partial("~/Views/Bar/Bar.cshtml", partialModel)
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="" alt="Zagreb" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Meet Zagreb in all its beauty.
+                    <a class="btn btn-default" href="">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="" alt="University" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Liked the city? Enroll in the university!
+                    <a class="btn btn-default" href="">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="" alt="Food" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Need a break? Have a snack!
+                    <a class="btn btn-default" href="">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="" alt="Park" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Go for a walk in park, it's about time!
+                    <a class="btn btn-default" href="">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

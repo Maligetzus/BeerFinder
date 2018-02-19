@@ -1,0 +1,19 @@
+﻿@using BeerFinder.Models.BarModels
+@model BeerFinder.Models.BarModels.SearchViewModel
+@{
+    ViewData["Title"] = "Search";
+    int i = 0;
+}
+<div class="container container-fluid">
+    <div class="row">
+        @foreach (BarViewModel partialModel in Model.BarList)
+        {
+            if (partialModel != null)
+            {
+                <div class="col-md-3">
+                    @Html.Partial("~/Views/Bar/Bar.cshtml", partialModel)
+                </div>
+            }
+        }
+    </div>
+</div>}

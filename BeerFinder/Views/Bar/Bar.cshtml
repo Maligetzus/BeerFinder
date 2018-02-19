@@ -1,0 +1,15 @@
+﻿@model BeerFinder.Models.BarModels.BarViewModel
+@{
+    ViewData["Title"] = "Bar";
+}
+<img src="~/images/@Model.Picture" style="border: 1px solid #000; max-width:500px; max-height:500px;" />
+<h4>@Model.Name</h4><br />
+<p>Working time: @Model.OpeningTime - @Model.ClosingTime</p><br />
+<label>Tags: </label>
+@if (Model.BarTags != null)
+{
+    foreach (var tag in Model.BarTags)
+    {
+        <lable>@tag.Text </lable>
+    }
+}
