@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-BeerFinder-20E4A311-C17C-4A3D-8369-C55EC3252AF4</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\BeerFinder20180219035705 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\BeerFinder20180219084915 - Web Deploy.pubxml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />
@@ -36,6 +41,10 @@
     <Content Update="Views\Bar\Index.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>
